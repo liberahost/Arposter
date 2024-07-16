@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster Interaktif Berbasis AR</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.3/aframe/build/aframe-ar.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs>
+        <!-- Kamera AR -->
+        <a-marker preset="hiro">
+            <!-- Poster -->
+            <a-box position="0 0.03 -0.5" material="src: url(path/to/your/poster-image.jpg); width: 1; height: 0.7;"></a-box>      
+            <!-- Informasi Tambahan -->
+            <a-entity position="0.6 0 0">
+                <a-text value="Rangkong adalah sejenis burung yang mempunyai paruh berbentuk tanduk sapi tetapi tanpa lingkaran. Biasanya paruhnya itu berwarna terang. Nama ilmiahnya Buceros merujuk pada bentuk paruh."
+                         align="left"
+                         width="2.5"
+                         position="0 0 0.1"></a-text>
+            </a-entity>
+            <!-- Animasi -->
+            <a-entity position="0 0 0">
+                <a-asset-item id="animatedModel" src="animation/hornbill.glb"></a-asset-item>
+                <a-entity gltf-model="#animatedModel" scale="0.05 0.05 0.05" rotation="0 -90 0"
+                    animation-mixer="clip: Animation; loop: repeat; crossFadeDuration: 1">
+                </a-entity>
+            </a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+</html>
